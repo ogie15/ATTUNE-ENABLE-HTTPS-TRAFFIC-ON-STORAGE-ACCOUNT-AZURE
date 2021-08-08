@@ -1,9 +1,9 @@
 #Region ================connect==========================
 # Set Admin User Name
-$uname = "tex_lag_ibok@tex.support.microsoft.com"
+$uname = "t"
 
 # Set Admin Password
-$pass = "Beans@102"
+$pass = "B"
 
 # Convert password to secure string
 $password = ConvertTo-SecureString $pass -AsPlainText -Force
