@@ -27,3 +27,8 @@
 > > > > ---
 > - *Next connection to Azure is done using the `Connect-AzAccount` CMDLET.*
 > - *Then loop through all resource groups using the `Get-AzResourceGroup` CMDLET and checks all resources for storage accounts.*
+> - *Next will be to set each storage account `EnableHttpsTrafficOnly` parameter to `True` using the CMDLET `Set-AzStorageAccount`*
+> - *Finally a CMDLET `Disconnect-AzAccount` is used to disconnect the Azure PowerShell session.*
+> ---
+[![SERVERTRIBE](https://www.servertribe.com/wp-content/themes/mars/assets/images/attune_logo.svg)](https://www.servertribe.com/)
+***&copy;2021 Powered by ServerTribe***
