@@ -72,7 +72,7 @@ foreach ($AllRG in $Script:AllRGS ) {
     # Set the variable for Rg name with no storage account 
     $Script:RGNameNS = ($AllRG).ResourceGroupName
 
-    # Writes a message to screen
+    # Writes a message to the screen
     Write-Output "Checking if Resource Groups $Script:RGNameNS has Storage Accounts...... `n"
 
     # Gets all resources of resource type 'Microsoft.Storage/storageAccounts' from each resource group and saves it in a variable
@@ -84,12 +84,12 @@ foreach ($AllRG in $Script:AllRGS ) {
     # checks if the variable is null
     if (!($Script:StorageAccounts)) {
 
-        # Writes a message to screen
+        # Writes a message to the screen
         Write-Output "Resource Group $Script:RGNameNS has no Storage Account `n"
 
     }else{
 
-        # Writes a message to screen
+        # Writes a message to the screen
         Write-Output "Resource Group $Script:RGName has Storage Account(s) `n"
 
         # looping through all storage accounts
@@ -101,16 +101,16 @@ foreach ($AllRG in $Script:AllRGS ) {
             # Set the variable for sub Rg name 
             $Script:RGNameSub = ($StorageAccount).ResourceGroupName
 
-            # Writes a message to screen
+            # Writes a message to the screen
             Write-Output "Setting EnableHttpsTrafficeOnly property of Storage Account with Name '$Script:StorageName' - to True..... `n"
 
-            # Pause Script for 1 milliseconds in case Microsoft has any throttling Policy on CMDLET "Set-AzStorageAccount"
+            # Pause Script for 1 millisecond in case Microsoft has any throttling Policy on CMDLET "Set-AzStorageAccount"
             Start-Sleep -Milliseconds 1
 
             # Set storage account EnableHttpsTrafficeOnly to $True
             Set-AzStorageAccount -ResourceGroupName $Script:RGNameSub -Name $Script:StorageName -EnableHttpsTrafficOnly $true -Force
 
-            # Writes a message to screen
+            # Writes a message to the screen
             Write-Output "`n Done `n"
 
         }

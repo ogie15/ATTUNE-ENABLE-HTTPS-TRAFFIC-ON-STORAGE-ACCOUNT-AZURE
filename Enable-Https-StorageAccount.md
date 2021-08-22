@@ -10,7 +10,7 @@
 > ---
 > #### **Region for Enable Https for StorageAccounts**
 > 
-> - *First the AzPowerShell Module is imported to the current session.*
+> - *First the AzPowerShell module is imported to the current session.*
 > - *Then the values below are set:*
 >
 > > | Variable Name | Description | Value |
