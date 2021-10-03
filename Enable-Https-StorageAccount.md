@@ -1,42 +1,22 @@
-# Enable-Https-StorageAccount
+# This step enables HTTPS traffic on Azure Storage Accounts
 
-## Region for ExecutionPolicy
+The Blueprint first gets the Execution Policy of the current PowerShell session.
 
-- *The script in this region first gets the execution policy of the current PowerShell session.*
-- *Then checks if it is set to Unrestricted.*
-- *`If` it is set, it does nothing but writes a message to the screen.*
-- *`Else` will set the execution policy to Unrestricted for the current session.*
+Then checks if the Execution Policy is set to Unrestricted.
 
----
+If it's not, it then sets the Execution Policy to Unrestricted for the current session.
 
-## Region for Enable Https for StorageAccounts
-
-First, the AzPowerShell module is imported to the current session.
+Next, the AzPowerShell module is imported to the current session.
 
 Then the values below are set:
 
-| Variable Name | Description | Value |
-| :----: | :----: | :---: |
-| UserName | This is the Username of the Azure Administrator | {azureusername.value} |
-| PasswordString | This is the Password of the Azure Administrator | {azurepassword.value} |
+1. UserName: This is the Username of the Azure Administrator corresponding to the `AzureUserName` set in the Inputs Tab.
+1. PasswordString: This is the Password of the Azure Administrator corresponding to the `AzurePassword` set in the Inputs Tab.
 
----
+Next, a connection to Azure is made.
 
-### Below is a table explaining how to create the variables on Attune with matching data types
+Then loops through all resource groups and checks for storage accounts.
 
----
+Next, it enables HTTPS Traffic on all storage accounts
 
-| Value in script | Value Location in Attune | Parameter location in Attune| Data Type | Example |
-| :----: | :---: | :---: | :---: | :---: |
-| {azureusername.value} | (value) Inputs-Text Vaules-Variable | (access) Inputs-Text Vaules-Name | String | admin@contoso.com |
-| {azurepassword.value} | (value) Inputs-Text Vaules-Variable | (secretkey) Inputs-Text Parameter-Name | String | P@$sw0rd |
-
----
-
-Next, connection to Azure is done using the `Connect-AzAccount` CMDLET.
-
-Then loop through all resource groups using the `Get-AzResourceGroup` CMDLET and checks all resources for storage accounts.
-
-Next will be to set each storage account `EnableHttpsTrafficOnly` parameter to `True` using the CMDLET `Set-AzStorageAccount`.
-
-Finally, a CMDLET `Disconnect-AzAccount` is used to disconnect the Azure PowerShell session.
+Finally, the Azure PowerShell session is disconnected.

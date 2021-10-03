@@ -1,5 +1,4 @@
 #Region for ExecutionPolicy
-# ===========================================================================
 # Get Execution Policy of the current process
 $Script:ProcessEP = Get-ExecutionPolicy -Scope Process
 
@@ -24,32 +23,24 @@ if ($Script:ValueProcessEP -eq 0) {
         Write-Output "Execution Policy is now set to Unrestricted for the Process"
     }
 }
-# ===========================================================================
 #EndRegion for ExecutionPolicy 
 
 
-
-
-#Region Enable Https for StorageAccounts
+#Region Start Azure VM
 # Import Module for Az PowerShell
 Import-Module -Name Az
 
 
-
 #Region assign variables
-# ===========================================================================
 # Save accesskey to this Variable
 $Script:UserName = "{azureusername.value}"
 
 # Save secretkey to this variable
 $Script:PasswordString = "{azurepassword.value}"
-# ===========================================================================
 #EndRegion assign variables
 
 
-
-#Regoin for Connection to Azure 
-# ===========================================================================
+#Region for Connection to Azure 
 # Set the password and convert it to secure string to the variable
 $Script:Password = ConvertTo-SecureString $Script:PasswordString -AsPlainText -Force
 
@@ -58,9 +49,7 @@ $Script:UserCredential = New-Object System.Management.Automation.PSCredential ($
 
 # Connect using set credentials to Azure
 Connect-AzAccount -Credential $Script:UserCredential
-# ===========================================================================
-#Regoin for Connection to Azure 
-
+#EndRegion for Connection to Azure 
 
 
 # Get all Resources Groups and saves them in the Variable ALlRGS
@@ -117,7 +106,6 @@ foreach ($AllRG in $Script:AllRGS ) {
     }
 }
 #EndRegion Enable Https for StorageAccounts
-
 
 
 #Region Disconnect the Azure session
