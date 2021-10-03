@@ -17,6 +17,6 @@ Next, a connection to Azure is made.
 
 Then loops through all resource groups and checks for storage accounts.
 
-Next, it enables HTTPS Traffic on all storage accounts
+Next, it enables HTTPS Traffic on those storage accounts
 
 Finally, the Azure PowerShell session is disconnected.

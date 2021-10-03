@@ -26,7 +26,7 @@ if ($Script:ValueProcessEP -eq 0) {
 #EndRegion for ExecutionPolicy 
 
 
-#Region Start Azure VM
+#Region Enable Https for StorageAccounts
 # Import Module for Az PowerShell
 Import-Module -Name Az
 
